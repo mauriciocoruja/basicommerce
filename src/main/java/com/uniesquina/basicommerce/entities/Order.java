@@ -1,7 +1,7 @@
 package com.uniesquina.basicommerce.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.uniesquina.basicommerce.enums.OrderStatus;
+import com.uniesquina.basicommerce.entities.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;

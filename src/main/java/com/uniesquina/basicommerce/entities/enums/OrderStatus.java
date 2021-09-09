@@ -1,4 +1,4 @@
-package com.uniesquina.basicommerce.enums;
+package com.uniesquina.basicommerce.entities.enums;
 
 public enum OrderStatus {
     WAITING_PAYMENT(1),
