@@ -6,6 +6,8 @@ import com.uniesquina.basicommerce.entities.enums.OrderStatus;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_order")
@@ -25,8 +27,18 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
     private User client;
 
+    @Transient
+    private Set<Product> items = new HashSet<>();
+
 
     public Order() {
+    }
+
+    public Order(Long id, Instant moment, Integer orderStatus, User client) {
+        this.id = id;
+        this.moment = moment;
+        this.orderStatus = orderStatus;
+        this.client = client;
     }
 
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {
@@ -68,6 +80,10 @@ public class Order implements Serializable {
 
     public void setClient(User client) {
         this.client = client;
+    }
+
+    public Set<Product> getItems() {
+        return items;
     }
 
     @Override
