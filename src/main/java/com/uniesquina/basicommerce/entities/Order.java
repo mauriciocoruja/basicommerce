@@ -21,14 +21,15 @@ public class Order implements Serializable {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
+
     private Integer orderStatus;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
 
-    @Transient
-    private Set<Product> items = new HashSet<>();
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items = new HashSet<>();
 
 
     public Order() {
@@ -46,6 +47,10 @@ public class Order implements Serializable {
         this.moment = moment;
         setOrderStatus(orderStatus);
         this.client = client;
+    }
+
+    public Set<OrderItem> getItems() {
+        return items;
     }
 
     public Long getId() {
@@ -82,9 +87,6 @@ public class Order implements Serializable {
         this.client = client;
     }
 
-    public Set<Product> getItems() {
-        return items;
-    }
 
     @Override
     public boolean equals(Object o) {

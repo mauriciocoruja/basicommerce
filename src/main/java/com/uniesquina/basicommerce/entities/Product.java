@@ -29,8 +29,8 @@ public class Product implements Serializable {
             @JoinColumn(name = "category_id", referencedColumnName = "id"))
     private Set<Category> categories = new HashSet<>();
 
-    @Transient
-    private Set<Order> orders = new HashSet<>();
+    @OneToMany(mappedBy = "id.product")
+    private Set<OrderItem> orders = new HashSet<>();
 
 
     public Product() {
@@ -84,9 +84,6 @@ public class Product implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
-    }
 
     public Set<Category> getCategories() {
         return categories;
