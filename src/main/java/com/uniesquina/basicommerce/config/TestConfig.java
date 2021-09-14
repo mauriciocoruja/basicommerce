@@ -3,6 +3,7 @@ package com.uniesquina.basicommerce.config;
 import com.uniesquina.basicommerce.entities.*;
 import com.uniesquina.basicommerce.entities.enums.OrderStatus;
 import com.uniesquina.basicommerce.repositories.*;
+import com.uniesquina.basicommerce.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
