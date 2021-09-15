@@ -1,7 +1,6 @@
 package com.uniesquina.basicommerce.resources;
 
 import com.uniesquina.basicommerce.entities.Category;
-import com.uniesquina.basicommerce.entities.User;
 import com.uniesquina.basicommerce.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +42,7 @@ public class CategoryResourse {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id){
-        categoryService.delete(id);
+        categoryService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 

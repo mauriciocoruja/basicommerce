@@ -48,7 +48,7 @@ public class UserResource {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
-        user  = userService.update(id, user);
+        user = userService.update(id, user);
         return ResponseEntity.ok().body(user);
     }
 

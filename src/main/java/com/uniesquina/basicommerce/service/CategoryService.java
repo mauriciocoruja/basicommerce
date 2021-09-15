@@ -1,7 +1,6 @@
 package com.uniesquina.basicommerce.service;
 
 import com.uniesquina.basicommerce.entities.Category;
-import com.uniesquina.basicommerce.entities.User;
 import com.uniesquina.basicommerce.repositories.CategoryRepository;
 import com.uniesquina.basicommerce.service.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +23,23 @@ public class CategoryService {
 
     public Category findById(Long id) {
         Optional<Category> category = categoryRepository.findById(id);
-        return category.get();
+        return category.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Category insert(Category category) {
         return categoryRepository.save(category);
     }
 
-    public void delete(Long id){
-        try{
+    public void deleteById(Long id) {
+        try {
             categoryRepository.deleteById(id);
-        } catch (EmptyResultDataAccessException e){
+        } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException(e);
         }
     }
 
     public Category update(Long id, Category category) {
-        try{
+        try {
             Category entity = categoryRepository.getById(id);
             updateData(entity, category);
             return categoryRepository.save(entity);
