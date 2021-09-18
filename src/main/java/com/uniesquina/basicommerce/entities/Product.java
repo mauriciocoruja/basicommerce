@@ -14,11 +14,11 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String description;
-    private Double price;
-    private String imgUrl;
+    private Long    id;
+    private String  name;
+    private String  description;
+    private Double  price;
+    private String  imgUrl;
 
     @ManyToMany
     @JoinTable(

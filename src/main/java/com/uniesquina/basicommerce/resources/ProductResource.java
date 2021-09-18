@@ -34,19 +34,19 @@ public class ProductResource {
         product = productService.insert(product);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .path("{/id}")
+                .path("/{id}")
                 .buildAndExpand(product.getId())
                 .toUri();
         return ResponseEntity.created(uri).body(product);
     }
 
-    @DeleteMapping(value = "{/id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         productService.delete(id);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping(value = "{/id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product) {
         product = productService.update(id, product);
         return ResponseEntity.ok().body(product);

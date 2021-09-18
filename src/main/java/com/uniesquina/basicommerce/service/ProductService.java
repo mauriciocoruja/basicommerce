@@ -1,7 +1,6 @@
 package com.uniesquina.basicommerce.service;
 
 import com.uniesquina.basicommerce.entities.Product;
-import com.uniesquina.basicommerce.entities.User;
 import com.uniesquina.basicommerce.repositories.ProductRepository;
 import com.uniesquina.basicommerce.service.exceptions.DatabaseException;
 import com.uniesquina.basicommerce.service.exceptions.ResourceNotFoundException;
@@ -54,9 +53,17 @@ public class ProductService {
     }
 
     private void updateData(Product entity, Product product) {
-        entity.setName(product.getName());
-        entity.setDescription(product.getDescription());
-        entity.setPrice(product.getPrice());
-        entity.setImgUrl(product.getImgUrl());
+        if (product.getName() != null){
+            entity.setName(product.getName());
+        }
+        if (product.getDescription() != null) {
+            entity.setDescription(product.getDescription());
+        }
+        if (product.getPrice() != null){
+            entity.setPrice(product.getPrice());
+        }
+        if (product.getImgUrl() != null){
+            entity.setImgUrl(product.getImgUrl());
+        }
     }
 }
